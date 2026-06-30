@@ -20,6 +20,11 @@ export const getCurrentUser = async () =>{
     return data
 }
 
+export const refreshToken = async () =>{
+    const {data} = await axiosInstance.post("/api/auth/refresh")
+    return data
+}
+
 export const getAllUserUrls = async () =>{
     const {data} = await axiosInstance.post("/api/user/urls")
     return data

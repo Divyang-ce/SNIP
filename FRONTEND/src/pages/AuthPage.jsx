@@ -4,11 +4,11 @@ import RegisterForm from '../components/RegisterForm'
 
 const AuthPage = () => {
 
-    const [login, setLogin] = useState(true)
+    const [isLogin, setIsLogin] = useState(true)
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-            {login ? <LoginForm state={setLogin} /> : <RegisterForm state={setLogin} />}
+        <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-4 py-12">
+            {isLogin ? <LoginForm state={setIsLogin} /> : <RegisterForm state={setIsLogin} />}
         </div>
     )
 }

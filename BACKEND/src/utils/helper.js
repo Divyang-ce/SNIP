@@ -7,12 +7,23 @@ export const generateNanoId = (length) =>{
 }
 
 export const signToken = (payload) =>{
-    return jsonwebtoken.sign(payload, process.env.JWT_SECRET, {expiresIn: "1h"})
+    return signAccessToken(payload)
+}
+
+export const signAccessToken = (payload) =>{
+    return jsonwebtoken.sign(payload, process.env.JWT_SECRET, {expiresIn: "15m"})
+}
+
+export const signRefreshToken = (payload) =>{
+    return jsonwebtoken.sign(payload, process.env.JWT_REFRESH_SECRET, {expiresIn: "7d"})
 }
 
 export const verifyToken = (token) =>{
-
     const decoded = jsonwebtoken.verify(token, process.env.JWT_SECRET)
-    console.log(decoded.id)
+    return decoded.id
+}
+
+export const verifyRefreshToken = (token) =>{
+    const decoded = jsonwebtoken.verify(token, process.env.JWT_REFRESH_SECRET)
     return decoded.id
 }

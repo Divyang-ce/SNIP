@@ -14,34 +14,34 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white border border-b-black">
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          {/* Left side - App Name */}
-          <div className="flex items-center">
-            <Link to="/" className="text-xl font-bold text-gray-800">
-              URL Shortener
-            </Link>
-          </div>
-          
-          {/* Right side - Auth buttons */}
+    <nav className="bg-paper/90 backdrop-blur-sm border-b border-mist sticky top-0 z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <Link to="/" className="flex items-center gap-2 group">
+            <span className="font-display text-xl font-bold text-ink">snip</span>
+            <span className="font-mono text-accent text-lg leading-none transition-transform duration-200 group-hover:translate-x-0.5">&raquo;&raquo;</span>
+          </Link>
+
           <div className="flex items-center">
             {isAuthenticated ? (
-              <div className="flex items-center space-x-4">
-                <span className="text-gray-700">Welcome, {user?.name || user?.email || 'User'}</span>
+              <div className="flex items-center gap-4">
+                <span className="hidden sm:block text-sm text-ink-soft">
+                  <span className="text-ink-soft/70">in as</span>{' '}
+                  <span className="font-medium text-ink">{user?.name || user?.email || 'User'}</span>
+                </span>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium"
+                  className="text-sm font-medium text-ink-soft hover:text-ink border border-mist hover:border-ink/30 px-4 py-1.5 rounded-full transition-colors"
                 >
-                  Logout
+                  Log out
                 </button>
               </div>
             ) : (
               <Link
                 to="/auth"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium"
+                className="bg-ink hover:bg-accent text-paper px-4 py-1.5 rounded-full text-sm font-medium transition-colors"
               >
-                Login
+                Log in
               </Link>
             )}
           </div>
